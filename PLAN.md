@@ -36,12 +36,12 @@ Mục tiêu: viết ra giấy trước khi code.
 
 Mục tiêu: có trang "Hello" chạy trên Vercel.
 
-- [ ] Tạo repo GitHub (private cũng được) → `git remote add origin <url>` → `git push -u origin main`
+- [x] Tạo repo GitHub: https://github.com/c01693338818/thiep-viet-tay
 - [x] `npx create-next-app@latest thiep-viet-tay --typescript --tailwind --app --eslint`
 - [x] Cài shadcn/ui: `npx shadcn@latest init`, thêm `button`, `card`, `input`, `textarea`, `select`, `badge`, `table`
 - [ ] Tạo project Supabase → lấy `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
 - [x] Tạo `.env.example` (đã commit) → [ ] copy thành `.env.local` và điền key Supabase
-- [ ] Kết nối repo với Vercel, thêm env vars, deploy
+- [x] Kết nối repo với Vercel, deploy: https://thiep-viet-tay.vercel.app → [ ] thêm env vars Supabase (Settings → Environment Variables)
 - [x] Thêm `README.md` ghi cách chạy local
 
 **Xong khi**: mở `https://<tên>.vercel.app` thấy trang chủ, push code là tự deploy lại.
