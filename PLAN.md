@@ -125,16 +125,18 @@ Mục tiêu: khách đặt được đơn, bạn nhận được thông báo.
 
 Mục tiêu: bạn quản lý đơn trên web thay vì vào Supabase.
 
-- [ ] Supabase Auth: tạo 1 tài khoản admin bằng email/password (tắt đăng ký công khai)
-- [ ] Middleware chặn `/admin/*` nếu chưa đăng nhập
-- [ ] `/admin/don-hang`: bảng đơn, lọc theo trạng thái, mới nhất lên đầu
-- [ ] `/admin/don-hang/[id]`:
-  - Thông tin khách, sản phẩm, **lời nhắn in to dễ đọc để viết**
-  - Nút đổi trạng thái theo thứ tự: new → confirmed → writing → shipped → done
-  - Upload ảnh thiệp đã viết (bucket `proofs`) → lưu `proof_image_url`
+- [x] Supabase Auth: tài khoản admin `admin@example.com` (đổi email/mật khẩu trong Supabase → Authentication → Users)
+  - [ ] Tắt đăng ký công khai: Supabase → Authentication → Sign In / Providers → tắt "Allow new users to sign up"
+  - Chỉ email trong `ADMIN_EMAILS` mới vào được /admin — [ ] **thêm `ADMIN_EMAILS` vào Vercel env**
+- [x] `proxy.ts` chặn `/admin/*` khi chưa đăng nhập, `/login` trang đăng nhập
+- [x] `/admin/don-hang`: bảng đơn, lọc theo trạng thái (kèm số đếm), mới nhất lên đầu
+- [x] `/admin/don-hang/[id]`:
+  - Thông tin khách, sản phẩm, lời nhắn in to dễ đọc
+  - Nút chuyển bước: new → confirmed → writing → shipped → done; hủy / mở lại
+  - Upload ảnh thiệp đã viết từng sản phẩm (bucket `proofs`)
   - Nhập mã vận đơn
-- [ ] `/admin/san-pham`: thêm/sửa/ẩn sản phẩm, upload ảnh
-- [ ] Trang tra cứu của khách hiển thị ảnh thiệp khi có `proof_image_url`
+- [x] `/admin/san-pham`: thêm/sửa/ẩn sản phẩm, upload ảnh (bucket `products`), tự sinh slug
+- [x] Trang đơn của khách hiển thị ảnh thiệp khi có `proof_image_url`
 
 **Xong khi**: xử lý 1 đơn từ `new` đến `done` hoàn toàn trên `/admin`, khách tra cứu thấy ảnh thiệp.
 
