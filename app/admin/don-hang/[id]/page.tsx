@@ -7,8 +7,9 @@ import { ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ProofUploadForm } from "@/components/admin/proof-upload-form";
 import { SubmitButton } from "@/components/admin/submit-button";
-import { updateOrderStatus, updateTracking, uploadProof } from "@/app/actions/admin";
+import { updateOrderStatus, updateTracking } from "@/app/actions/admin";
 import { getOrderById } from "@/lib/admin-data";
 import { getAdminUser } from "@/lib/auth";
 import { formatDate, formatPrice } from "@/lib/format";
@@ -105,12 +106,7 @@ async function OrderDetail({ params }: Pick<PageProps<"/admin/don-hang/[id]">, "
                       className="rounded-lg object-cover"
                     />
                   )}
-                  <form action={uploadProof.bind(null, order.id, item.id)} className="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center">
-                    <Input type="file" name="proof" accept="image/*" required className="flex-1" />
-                    <SubmitButton variant="outline" pendingText="Đang tải lên…">
-                      {item.proof_image_url ? "Thay ảnh thiệp" : "Tải ảnh thiệp đã viết"}
-                    </SubmitButton>
-                  </form>
+                  <ProofUploadForm orderId={order.id} itemId={item.id} hasProof={Boolean(item.proof_image_url)} />
                 </div>
               </li>
             ))}

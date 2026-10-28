@@ -36,11 +36,22 @@ export async function updateTracking(orderId: string, formData: FormData) {
   revalidatePath(`/admin/don-hang/${orderId}`);
 }
 
-export async function uploadProof(orderId: string, itemId: string, formData: FormData) {
-  await requireAdmin();
+const MAX_IMAGE_BYTES = 3.5 * 1024 * 1024;
+
+export async function uploadProof(
+  orderId: string,
+  itemId: string,
+  _prev: ActionState,
+  formData: FormData
+): Promise<ActionState> {
+  try {
+    await requireAdmin();
+  } catch (e) {
+    return { error: (e as Error).message };
+  }
   const file = formData.get("proof");
-  if (!(file instanceof File) || file.size === 0) throw new Error("Chưa chọn ảnh");
-  if (file.size > 5 * 1024 * 1024) throw new Error("Ảnh quá 5MB");
+  if (!(file instanceof File) || file.size === 0) return { error: "Chưa chọn ảnh" };
+  if (file.size > MAX_IMAGE_BYTES) return { error: "Ảnh quá 3.5MB, chọn ảnh nhỏ hơn." };
 
   const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
   const path = `${orderId}/${itemId}-${Date.now()}.${ext}`;
@@ -49,16 +60,17 @@ export async function uploadProof(orderId: string, itemId: string, formData: For
   const { error: uploadError } = await supabase.storage
     .from("proofs")
     .upload(path, Buffer.from(await file.arrayBuffer()), { contentType: file.type, upsert: true });
-  if (uploadError) throw new Error(`Không upload được ảnh: ${uploadError.message}`);
+  if (uploadError) return { error: `Không upload được ảnh: ${uploadError.message}` };
 
   const { data } = supabase.storage.from("proofs").getPublicUrl(path);
   const { error } = await supabase
     .from("order_items")
     .update({ proof_image_url: data.publicUrl })
     .eq("id", itemId);
-  if (error) throw new Error(`Không lưu được ảnh: ${error.message}`);
+  if (error) return { error: `Không lưu được ảnh: ${error.message}` };
 
   revalidatePath(`/admin/don-hang/${orderId}`);
+  return { ok: true };
 }
 
 // ---------- Sản phẩm ----------
@@ -105,7 +117,7 @@ export async function saveProduct(_prev: ActionState, formData: FormData): Promi
   const image = formData.get("image");
   let image_url = fields.image_url ?? null;
   if (image instanceof File && image.size > 0) {
-    if (image.size > 5 * 1024 * 1024) return { error: "Ảnh quá 5MB" };
+    if (image.size > MAX_IMAGE_BYTES) return { error: "Ảnh quá 3.5MB, chọn ảnh nhỏ hơn." };
     const ext = image.name.split(".").pop()?.toLowerCase() || "jpg";
     const path = `${fields.slug}-${Date.now()}.${ext}`;
     const { error: uploadError } = await supabase.storage

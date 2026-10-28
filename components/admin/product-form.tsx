@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ImageInput } from "@/components/admin/image-input";
 import { saveProduct } from "@/app/actions/admin";
 import { PRODUCT_TYPE_LABEL, type Product, type ProductType } from "@/lib/types";
 
@@ -51,12 +52,12 @@ export function ProductForm({ product }: { product: Product | null }) {
         <Textarea id="description" name="description" rows={4} defaultValue={product?.description ?? ""} />
       </Field>
 
-      <Field label="Ảnh sản phẩm" htmlFor="image" hint="Tỉ lệ 4:5 (VD 800×1000), tối đa 5MB">
+      <Field label="Ảnh sản phẩm" htmlFor="image" hint="Tỉ lệ 4:5. Ảnh lớn sẽ tự thu nhỏ về 1600px trước khi tải lên.">
         <div className="flex items-start gap-4">
           {product?.image_url && (
             <Image src={product.image_url} alt="" width={96} height={120} className="rounded-lg object-cover" />
           )}
-          <Input id="image" name="image" type="file" accept="image/*" />
+          <ImageInput id="image" name="image" />
         </div>
       </Field>
 
