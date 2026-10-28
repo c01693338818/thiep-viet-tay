@@ -40,8 +40,8 @@ Mục tiêu: có trang "Hello" chạy trên Vercel.
 - [x] `npx create-next-app@latest thiep-viet-tay --typescript --tailwind --app --eslint`
 - [x] Cài shadcn/ui: `npx shadcn@latest init`, thêm `button`, `card`, `input`, `textarea`, `select`, `badge`, `table`
 - [ ] Tạo project Supabase → lấy `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
-- [x] Tạo `.env.example` (đã commit) → [ ] copy thành `.env.local` và điền key Supabase
-- [x] Kết nối repo với Vercel, deploy: https://thiep-viet-tay.vercel.app → [ ] thêm env vars Supabase (Settings → Environment Variables)
+- [x] Tạo `.env.example` (đã commit) và `.env.local` (đã điền key Supabase)
+- [x] Kết nối repo với Vercel, deploy: https://thiep-viet-tay.vercel.app (đã thêm env vars Supabase)
 - [x] Thêm `README.md` ghi cách chạy local
 
 **Xong khi**: mở `https://<tên>.vercel.app` thấy trang chủ, push code là tự deploy lại.
@@ -86,16 +86,18 @@ custom_message text, proof_image_url text
 
 Mục tiêu: khách xem và chọn được sản phẩm.
 
-- [ ] Layout chung: header (logo, link giỏ hàng), footer (liên hệ, chính sách)
-- [ ] Trang chủ `/`: banner + lưới sản phẩm nổi bật
-- [ ] Trang danh mục `/san-pham`: lọc theo `type` (postcard / thiệp viết tay)
-- [ ] Trang chi tiết `/san-pham/[slug]`:
+- [x] Layout chung `app/(shop)/layout.tsx`: header (logo, nav, nút giỏ hàng), footer
+- [x] Trang chủ `/`: banner + lưới 8 sản phẩm
+- [x] Trang danh mục `/san-pham?type=`: lọc postcard / thiệp viết tay
+- [x] Trang chi tiết `/san-pham/[slug]`:
   - Ảnh lớn, tên, giá, mô tả
-  - Nếu `type = handwritten`: ô nhập lời nhắn (đếm ký tự, tối đa 200)
+  - Nếu `type = handwritten`: ô nhập lời nhắn (đếm ký tự, tối đa 200, bắt buộc)
   - Chọn số lượng, nút "Thêm vào giỏ"
-- [ ] Giỏ hàng lưu `localStorage` (không cần đăng nhập), dùng Zustand hoặc React context
-- [ ] Trang `/gio-hang`: danh sách, sửa số lượng, xóa, tổng tiền
-- [ ] Responsive: kiểm tra trên điện thoại (phần lớn khách dùng mobile)
+- [x] Giỏ hàng lưu `localStorage` bằng Zustand (`lib/cart.ts`, key `thiep-cart`)
+- [x] Trang `/gio-hang`: danh sách, sửa số lượng, xóa, tạm tính, nút sang `/thanh-toan`
+- [ ] Responsive: bạn mở https://thiep-viet-tay.vercel.app trên điện thoại kiểm tra
+
+Ghi chú kỹ thuật: sản phẩm được cache 1 giờ (`"use cache"` + `cacheTag("products")`); admin sửa sản phẩm ở giai đoạn 5 sẽ gọi `revalidateTag("products")`.
 
 **Xong khi**: thêm 2 sản phẩm vào giỏ, tắt trình duyệt mở lại giỏ vẫn còn.
 

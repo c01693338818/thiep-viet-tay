@@ -1,11 +1,11 @@
-[
+﻿[
   {
     "slug": "postcard-ha-noi-mua-thu",
     "name": "Postcard Hà Nội mùa thu",
     "type": "postcard",
     "price": 25000,
     "description": "Postcard in trên giấy mỹ thuật 300gsm, kích thước 10x15cm. Hình minh họa phố cổ Hà Nội mùa lá rụng.",
-    "image_url": "https://placehold.co/800x1000/f5e6d3/8b5e3c?text=Ha+Noi+mua+thu",
+    "image_url": "https://placehold.co/800x1000/f5e6d3/8b5e3c.png?text=Ha+Noi+mua+thu",
     "sort_order": 1
   },
   {
@@ -14,7 +14,7 @@
     "type": "postcard",
     "price": 25000,
     "description": "Postcard in trên giấy mỹ thuật 300gsm, kích thước 10x15cm. Góc nhìn Sài Gòn lung linh ánh đèn.",
-    "image_url": "https://placehold.co/800x1000/1f2a44/f0d9a8?text=Sai+Gon+dem",
+    "image_url": "https://placehold.co/800x1000/1f2a44/f0d9a8.png?text=Sai+Gon+dem",
     "sort_order": 2
   },
   {
@@ -23,7 +23,7 @@
     "type": "postcard",
     "price": 25000,
     "description": "Postcard in trên giấy mỹ thuật 300gsm, kích thước 10x15cm. Đồi thông và sương mù buổi sớm.",
-    "image_url": "https://placehold.co/800x1000/dfe9e3/3f5a4a?text=Da+Lat+suong",
+    "image_url": "https://placehold.co/800x1000/dfe9e3/3f5a4a.png?text=Da+Lat+suong",
     "sort_order": 3
   },
   {
@@ -32,7 +32,7 @@
     "type": "postcard",
     "price": 99000,
     "description": "Bộ 5 postcard: Hà Nội, Huế, Hội An, Đà Lạt, Sài Gòn. Giấy mỹ thuật 300gsm, đựng trong túi giấy kraft.",
-    "image_url": "https://placehold.co/800x1000/efe3d0/5c4a3a?text=Bo+5+postcard",
+    "image_url": "https://placehold.co/800x1000/efe3d0/5c4a3a.png?text=Bo+5+postcard",
     "sort_order": 4
   },
   {
@@ -41,7 +41,7 @@
     "type": "handwritten",
     "price": 45000,
     "description": "Thiệp gấp 12x17cm, giấy kraft dày. Lời chúc do bạn soạn, chúng mình viết tay bằng bút mực, kèm phong bì.",
-    "image_url": "https://placehold.co/800x1000/fde8e8/a33a3a?text=Thiep+sinh+nhat",
+    "image_url": "https://placehold.co/800x1000/fde8e8/a33a3a.png?text=Thiep+sinh+nhat",
     "sort_order": 5
   },
   {
@@ -50,7 +50,7 @@
     "type": "handwritten",
     "price": 45000,
     "description": "Thiệp gấp 12x17cm, giấy mỹ thuật trắng ngà. Viết tay lời cảm ơn theo nội dung bạn gửi, kèm phong bì.",
-    "image_url": "https://placehold.co/800x1000/fff7e6/8a6d2f?text=Thiep+cam+on",
+    "image_url": "https://placehold.co/800x1000/fff7e6/8a6d2f.png?text=Thiep+cam+on",
     "sort_order": 6
   },
   {
@@ -59,7 +59,7 @@
     "type": "handwritten",
     "price": 55000,
     "description": "Thiệp gấp 12x17cm, giấy mỹ thuật hồng nhạt, ép nhũ viền. Viết tay lời nhắn của bạn, kèm phong bì và sáp niêm phong.",
-    "image_url": "https://placehold.co/800x1000/fce4ec/b0355a?text=Thiep+tinh+yeu",
+    "image_url": "https://placehold.co/800x1000/fce4ec/b0355a.png?text=Thiep+tinh+yeu",
     "sort_order": 7
   },
   {
@@ -68,7 +68,7 @@
     "type": "handwritten",
     "price": 35000,
     "description": "Chọn bất kỳ mẫu postcard nào, chúng mình viết tay lời nhắn của bạn ở mặt sau và gửi thẳng tới người nhận.",
-    "image_url": "https://placehold.co/800x1000/e8f0f7/2f4a6a?text=Postcard+viet+tay",
+    "image_url": "https://placehold.co/800x1000/e8f0f7/2f4a6a.png?text=Postcard+viet+tay",
     "sort_order": 8
   }
 ]

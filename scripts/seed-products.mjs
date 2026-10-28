@@ -15,7 +15,9 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("Thiếu NEXT_PUBLIC_SUPABASE_URL hoặc SUPABASE_SERVICE_ROLE_KEY trong .env.local");
 
-const products = JSON.parse(readFileSync(resolve(root, "supabase/products.json"), "utf8"));
+// Bỏ BOM nếu file được lưu bằng editor Windows.
+const raw = readFileSync(resolve(root, "supabase/products.json"), "utf8").replace(/^﻿/, "");
+const products = JSON.parse(raw);
 
 const res = await fetch(`${url}/rest/v1/products?on_conflict=slug`, {
   method: "POST",
