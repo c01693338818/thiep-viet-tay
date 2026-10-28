@@ -72,11 +72,11 @@ product_name text, price int, quantity int,
 custom_message text, proof_image_url text
 ```
 
-- [ ] Tạo 3 bảng trên qua SQL Editor của Supabase (lưu SQL vào `supabase/schema.sql`)
-- [ ] Bật RLS: `products` ai cũng đọc được; `orders` / `order_items` chỉ service role ghi/đọc
-- [ ] Tạo bucket Storage `products` (public) và `proofs` (public)
-- [ ] Nhập 5–10 sản phẩm từ `products.json` giai đoạn 0, upload ảnh
-- [ ] Tạo `lib/supabase.ts` với 2 client: anon (client-side) và service (server-side)
+- [x] Tạo 3 bảng trên qua SQL Editor của Supabase (SQL ở `supabase/schema.sql`)
+- [x] Bật RLS: `products` ai cũng đọc được; `orders` / `order_items` chỉ service role ghi/đọc
+- [x] Tạo bucket Storage `products` (public) và `proofs` (public)
+- [x] Nhập 8 sản phẩm mẫu từ `supabase/products.json` (`node scripts/seed-products.mjs`) — ảnh đang là placeholder, [ ] thay ảnh thật sau
+- [x] `lib/supabase/client.ts` (anon, browser) và `lib/supabase/server.ts` (anon + service role, server)
 
 **Xong khi**: query `select * from products` trả về sản phẩm có ảnh hiển thị được.
 
