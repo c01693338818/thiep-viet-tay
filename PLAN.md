@@ -107,17 +107,17 @@ Ghi chú kỹ thuật: sản phẩm được cache 1 giờ (`"use cache"` + `cac
 
 Mục tiêu: khách đặt được đơn, bạn nhận được thông báo.
 
-- [ ] Trang `/thanh-toan`: form họ tên, SĐT, địa chỉ, ghi chú; chọn vùng ship (tính phí); chọn COD / chuyển khoản
-- [ ] Validate bằng `zod` (SĐT 10 số, địa chỉ không rỗng)
-- [ ] Server Action `createOrder`: sinh mã đơn, ghi `orders` + `order_items` bằng service client, xóa giỏ
-- [ ] Trang `/don-hang/[code]`:
-  - Hiện mã đơn, tổng tiền, trạng thái
-  - Nếu chuyển khoản: hiện ảnh QR + số TK + nội dung CK = mã đơn
-  - Nếu COD: hướng dẫn chuẩn bị tiền mặt
-- [ ] Gửi email cho bạn khi có đơn mới (Resend) — gồm mã đơn, SĐT khách, nội dung lời nhắn
-- [ ] Trang tra cứu `/tra-cuu`: nhập mã đơn + SĐT → xem trạng thái
+- [x] Trang `/thanh-toan`: form họ tên, SĐT, địa chỉ, ghi chú; chọn vùng ship (`lib/shipping.ts`, 3 mức phí); chọn COD / chuyển khoản
+- [x] Validate bằng `zod` (SĐT 10 số, địa chỉ ≥ 10 ký tự, thiệp viết tay phải có lời nhắn)
+- [x] Server Action `createOrder` (`app/actions/orders.ts`): mã đơn `TH-YYMMDD-XXXX`, giá lấy lại từ DB, ghi `orders` + `order_items`, xóa giỏ
+- [x] Trang `/don-hang/[code]`:
+  - Mã đơn, trạng thái, sản phẩm + lời nhắn, tổng tiền, địa chỉ
+  - Chuyển khoản: QR động VietQR (đúng số tiền + nội dung = mã đơn) — [ ] **cần điền `NEXT_PUBLIC_BANK_ID/ACCOUNT/HOLDER`** vào `.env.local` và Vercel
+  - COD: hướng dẫn chuẩn bị tiền mặt
+- [ ] Gửi email cho bạn khi có đơn mới (Resend) — **để sau**, cần `RESEND_API_KEY` + `ORDER_NOTIFY_EMAIL`
+- [x] Trang `/tra-cuu`: mã đơn + SĐT → chuyển sang `/don-hang/[code]`
 
-**Xong khi**: tự đặt 1 đơn thử trên bản deploy, nhận được email, tra cứu ra đơn.
+**Xong khi**: tự đặt 1 đơn thử trên bản deploy, tra cứu ra đơn. (Email bổ sung sau.)
 
 ---
 
