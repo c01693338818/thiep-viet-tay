@@ -11,6 +11,7 @@ export function SiteFooter() {
         <p>© {year} {shopName}</p>
         <nav className="flex gap-4">
           <Link href="/san-pham" className="hover:text-foreground">Sản phẩm</Link>
+          <Link href="/gioi-thieu" className="hover:text-foreground">Giới thiệu</Link>
           <Link href="/tra-cuu" className="hover:text-foreground">Tra cứu đơn</Link>
           <Link href="/chinh-sach" className="hover:text-foreground">Chính sách</Link>
         </nav>

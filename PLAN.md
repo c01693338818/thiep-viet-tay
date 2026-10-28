@@ -146,13 +146,17 @@ Mục tiêu: bạn quản lý đơn trên web thay vì vào Supabase.
 
 Mục tiêu: trang trông đáng tin, share lên Facebook/Zalo đẹp.
 
-- [ ] Chụp lại ảnh sản phẩm thật, nền sáng, cùng tỉ lệ (gợi ý 4:5)
-- [ ] Trang `/gioi-thieu`, `/chinh-sach` (giao hàng, đổi trả, bảo mật)
-- [ ] Metadata: title, description, Open Graph image cho từng trang sản phẩm
-- [ ] `sitemap.xml`, `robots.txt` (Next.js hỗ trợ sẵn)
-- [ ] Favicon, trang 404
-- [ ] Google Analytics hoặc Vercel Analytics (free)
-- [ ] Kiểm tra Lighthouse trên mobile > 80 điểm
+- [ ] **Bạn làm**: chụp ảnh sản phẩm thật, tỉ lệ 4:5, upload qua `/admin/san-pham` → sửa từng sản phẩm
+- [x] Trang `/gioi-thieu`, `/chinh-sach` — [ ] **bạn sửa lại nội dung** cho đúng cách vận hành (file `app/(shop)/gioi-thieu/page.tsx`, `chinh-sach/page.tsx`)
+  - Thông tin liên hệ lấy từ env `NEXT_PUBLIC_CONTACT_EMAIL/PHONE`, `NEXT_PUBLIC_FACEBOOK_URL/INSTAGRAM_URL` — [ ] điền vào Vercel
+- [x] Metadata: `metadataBase`, Open Graph mặc định (`app/opengraph-image.tsx`), trang sản phẩm dùng ảnh sản phẩm
+- [x] `sitemap.xml` (tự liệt kê sản phẩm), `robots.txt` (chặn /admin, /login, /don-hang, giỏ, thanh toán)
+- [x] Favicon `app/icon.svg`, trang 404 `app/not-found.tsx`
+- [x] Vercel Analytics (`@vercel/analytics`) — [ ] bật trong Vercel → project → Analytics → Enable
+- [ ] Kiểm tra Lighthouse trên mobile > 80 điểm (Chrome DevTools → Lighthouse)
+- [ ] Khi có domain riêng: đổi `NEXT_PUBLIC_SITE_URL` trên Vercel
+
+Ghi chú: `.npmrc` bật `legacy-peer-deps` vì npm 10 lỗi khi cài `@vercel/analytics`.
 
 **Xong khi**: paste link vào Zalo/Messenger hiện ảnh + tiêu đề đúng.
 

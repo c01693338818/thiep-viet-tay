@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,14 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "vietnamese"],
 });
 
-const shopName = process.env.NEXT_PUBLIC_SHOP_NAME ?? "Thiệp Viết Tay";
-
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: shopName,
-    template: `%s | ${shopName}`,
+    default: site.name,
+    template: `%s | ${site.name}`,
   },
-  description: "Thiệp viết tay và postcard theo yêu cầu.",
+  description: site.description,
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -28,7 +37,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

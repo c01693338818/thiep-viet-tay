@@ -128,3 +128,28 @@
     @apply font-sans;
   }
 }
+
+/* Trang nội dung dài (giới thiệu, chính sách) */
+.prose-custom {
+  @apply text-base leading-relaxed;
+}
+.prose-custom h2 {
+  @apply mt-8 mb-3 text-xl font-semibold;
+}
+.prose-custom p,
+.prose-custom ul,
+.prose-custom ol {
+  @apply my-3 text-foreground/90;
+}
+.prose-custom ul {
+  @apply list-disc pl-6;
+}
+.prose-custom ol {
+  @apply list-decimal pl-6;
+}
+.prose-custom li {
+  @apply my-1;
+}
+.prose-custom a {
+  @apply underline underline-offset-4 hover:text-foreground;
+}
